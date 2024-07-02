@@ -18,6 +18,7 @@ export default function SignupPage() {
 
   const [btnDisabeled, setBtnDisabeled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (
@@ -37,7 +38,11 @@ export default function SignupPage() {
     try {
       setLoading(true);
       console.log("on signup is going to call");
+<<<<<<< HEAD
       const response = await axios.post(SIGNUP_URL, user);
+=======
+      const response = await axios.post(API_URL + SIGNUP_URL, user);
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
       console.log("on signup is going to called");
       console.log("Signup success..", response.data);
       router.push("/login");
