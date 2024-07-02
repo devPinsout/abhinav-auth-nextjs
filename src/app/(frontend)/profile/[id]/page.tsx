@@ -6,9 +6,16 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { LOGOUT_URL, USER_DETAIL_URL } from "@/helpers/constant";
 
+interface UserData {
+  _id: string;
+  username: string;
+  email: string;
+  isVerified: boolean;
+}
+
 export default function UserProfilePage({ params }: any) {
   const router = useRouter();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<UserData | null>(null);
 
   const getUserDetails = async () => {
     try {
@@ -39,7 +46,7 @@ export default function UserProfilePage({ params }: any) {
       <div className="flex flex-col items-center justify-center py-2">
         <p className="text-4xl text-white my-4 ">Profile Page</p>
         <h2 className="p-3 m-3 rounded bg-green-500 text-white ">
-          {data ? (
+          {data?._id ? (
             <div>
               <strong>ID:</strong> {data._id}
             </div>
@@ -48,27 +55,27 @@ export default function UserProfilePage({ params }: any) {
           )}
         </h2>
         <h2 className="p-3 m-3 rounded bg-green-500 text-white">
-          {data ? (
+          {data?.username ? (
             <div>
-              <strong>Username:</strong> {data?.username}
+              <strong>Username:</strong> {data.username}
             </div>
           ) : (
             "Not Available"
           )}
         </h2>
         <h2 className="p-3 m-3 rounded bg-green-500 text-white">
-          {data ? (
+          {data?.email ? (
             <div>
-              <strong>Email:</strong> {data?.email}
+              <strong>Email:</strong> {data.email}
             </div>
           ) : (
             "Not Available"
           )}
         </h2>
         <h2 className="p-3 m-3 rounded bg-green-500 text-white">
-          {data ? (
+          {data?.isVerified !== undefined ? (
             <div>
-              <strong>Verified:</strong> {data?.isVerified ? "Yes" : "No"}
+              <strong>Verified:</strong> {data.isVerified ? "Yes" : "No"}
             </div>
           ) : (
             "Not Available"
