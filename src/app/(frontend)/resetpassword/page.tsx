@@ -16,7 +16,11 @@ export default function ResetPasswordPage() {
 
   const resetPassword = async () => {
     try {
+<<<<<<< HEAD
       await axios.post(RESET_PASSWORD_URL, { token, password });
+=======
+      await axios.post(API_URL + RESET_PASSWORD_URL, { token, password });
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
     } catch (error: any) {
       console.log(error.response.data);
     }
@@ -24,7 +28,11 @@ export default function ResetPasswordPage() {
 
   const verifyToken = async () => {
     try {
+<<<<<<< HEAD
       await axios.post(VERIFY_FORGOT_PASSWORD_TOKEN_URL, { token });
+=======
+      await axios.post(API_URL + VERIFY_FORGOT_PASSWORD_TOKEN_URL, { token });
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
       setVerified(true);
     } catch (error: any) {
       setError(true);

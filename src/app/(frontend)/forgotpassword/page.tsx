@@ -12,7 +12,11 @@ export default function ForgotPasswordPage() {
 
   const onForgotPassword = async () => {
     try {
+<<<<<<< HEAD
       await axios.post(VERIFY_FORGOT_PASSWORD_URL, { email });
+=======
+      await axios.post(API_URL + VERIFY_FORGOT_PASSWORD_URL, { email });
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
     } catch (error: any) {
       console.log(error);
     }

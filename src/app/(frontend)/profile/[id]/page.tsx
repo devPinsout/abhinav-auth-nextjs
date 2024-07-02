@@ -17,11 +17,15 @@ interface UserData {
 export default function UserProfilePage({ params }: any) {
   const router = useRouter();
   const [data, setData] = useState<UserData | null>(null);
+<<<<<<< HEAD
+=======
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
 
   const getUserDetails = async () => {
     try {
       console.log("Fetching user details...");
-      const response = await axios.get(USER_DETAIL_URL);
+      const response = await axios.get(API_URL + USER_DETAIL_URL);
       console.log("User details response:", response);
       if (response.data && response.data.data) {
         setData(response.data.data);
