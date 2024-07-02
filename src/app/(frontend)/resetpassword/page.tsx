@@ -1,6 +1,7 @@
 "use client";
 
 import { connect } from "@/dbConfig/dbConfig";
+import { RESET_PASSWORD_URL, VERIFY_FORGOT_PASSWORD_TOKEN_URL } from "@/helpers/constant";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -14,7 +15,7 @@ export default function ResetPasswordPage() {
 
   const resetPassword = async () => {
     try {
-      await axios.post("/api/users/resetpassword", { token, password });
+      await axios.post(RESET_PASSWORD_URL, { token, password });
     } catch (error: any) {
       console.log(error.response.data);
     }
@@ -22,7 +23,7 @@ export default function ResetPasswordPage() {
 
   const verifyToken = async () => {
     try {
-      await axios.post("/api/users/verifyforgotpasswordtoken", { token });
+      await axios.post(VERIFY_FORGOT_PASSWORD_TOKEN_URL, { token });
       setVerified(true);
     } catch (error: any) {
       setError(true);
