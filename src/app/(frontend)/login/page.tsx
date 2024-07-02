@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { LOGIN_URL } from "@/helpers/constant";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function LoginPage() {
 
   const [btnDisabeled, setBtnDisabeled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
@@ -27,7 +29,7 @@ export default function LoginPage() {
   const onLogin = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", user);
+      const response = await axios.post(API_URL + LOGIN_URL, user);
       console.log("Login success ", response.data);
       toast.success("Login success");
       router.push("/profile");

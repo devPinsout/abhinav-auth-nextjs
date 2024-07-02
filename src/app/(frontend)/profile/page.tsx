@@ -8,13 +8,15 @@ import { useState } from "react";
 import { LOGOUT_URL, USER_DETAIL_URL } from "@/helpers/constant";
 
 export default function ProfilePage() {
+
   const router = useRouter();
   const [data, setData] = useState("nothing");
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const logout = async () => {
     try {
       console.log("Logging out...");
-      const response = await axios.get(LOGOUT_URL);
+      const response = await axios.get(API_URL + LOGOUT_URL);
       console.log("Logout response:", response);
       toast.success("Logout successful");
       router.push("/login");
@@ -27,7 +29,7 @@ export default function ProfilePage() {
   const getUserDetails = async () => {
     try {
       console.log("Fetching user details...");
-      const response = await axios.get(USER_DETAIL_URL);
+      const response = await axios.get(API_URL + USER_DETAIL_URL);
       console.log("User details response:", response);
       setData(response.data.data._id);
     } catch (error: any) {

@@ -10,10 +10,11 @@ export default function VerifyEmailPage() {
     const [token, setToken] = useState("");
     const [verified, setVerified] = useState(false);
     const [error, setError] = useState(false);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
     const verifyUserEmail = async () => {
         try {
-            const response = await axios.post(VERIFY_EMAIL_URL, {token});
+            const response = await axios.post(API_URL + VERIFY_EMAIL_URL, {token});
             setVerified(true);
         } catch (error: any) {
             setError(true);

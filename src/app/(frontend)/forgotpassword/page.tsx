@@ -1,15 +1,18 @@
 "use client";
 
+import { VERIFY_FORGOT_PASSWORD_URL } from "@/helpers/constant";
 import axios from "axios";
 import Link from "next/link";
 import React from "react";
 
 export default function ForgotPasswordPage() {
+
   const [email, setEmail] = React.useState("");
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const onForgotPassword = async () => {
     try {
-      await axios.post("/api/users/forgotpassword", { email });
+      await axios.post(API_URL + VERIFY_FORGOT_PASSWORD_URL, { email });
     } catch (error: any) {
       console.log(error);
     }

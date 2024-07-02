@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { SIGNUP_URL } from "@/helpers/constant";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -17,6 +18,7 @@ export default function SignupPage() {
 
   const [btnDisabeled, setBtnDisabeled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (
@@ -36,7 +38,7 @@ export default function SignupPage() {
     try {
       setLoading(true);
       console.log("on signup is going to call");
-      const response = await axios.post("/api/users/signup", user);
+      const response = await axios.post(API_URL + SIGNUP_URL, user);
       console.log("on signup is going to called");
       console.log("Signup success..", response.data);
       router.push("/login");

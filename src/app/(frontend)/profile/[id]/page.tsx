@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { LOGOUT_URL, USER_DETAIL_URL } from "@/helpers/constant";
 
 interface UserData {
@@ -16,11 +17,12 @@ interface UserData {
 export default function UserProfilePage({ params }: any) {
   const router = useRouter();
   const [data, setData] = useState<UserData | null>(null);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const getUserDetails = async () => {
     try {
       console.log("Fetching user details...");
-      const response = await axios.get(USER_DETAIL_URL);
+      const response = await axios.get(API_URL + USER_DETAIL_URL);
       console.log("User details response:", response);
       if (response.data && response.data.data) {
         setData(response.data.data);
@@ -81,6 +83,12 @@ export default function UserProfilePage({ params }: any) {
             "Not Available"
           )}
         </h2>
+        <Link
+          href="/profile"
+          className="text-md font-semibold hover:text-indigo-500 ml-2 no-underline  text-indigo-600"
+        >
+          Click For Home
+        </Link>
       </div>
     </section>
   );
