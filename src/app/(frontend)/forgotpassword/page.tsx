@@ -6,7 +6,9 @@ import Link from "next/link";
 import React from "react";
 
 export default function ForgotPasswordPage() {
+
   const [email, setEmail] = React.useState("");
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const onForgotPassword = async () => {
     try {

@@ -37,8 +37,10 @@ export default function SignupPage() {
     try {
       setLoading(true);
       console.log("on signup is going to call");
+
       const response = await axios.post(SIGNUP_URL, user);
       console.log("on signup is going to called");
+      
       console.log("Signup success..", response.data);
       router.push("/login");
     } catch (error: any) {

@@ -16,6 +16,7 @@ export default function LoginPage() {
 
   const [btnDisabeled, setBtnDisabeled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
@@ -29,6 +30,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const response = await axios.post(LOGIN_URL, user);
+
       console.log("Login success ", response.data);
       toast.success("Login success");
       router.push("/profile");

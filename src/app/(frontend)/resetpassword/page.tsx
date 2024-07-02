@@ -12,6 +12,7 @@ export default function ResetPasswordPage() {
   const [verified, setVerified] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [password, setPassword] = React.useState("");
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const resetPassword = async () => {
     try {
