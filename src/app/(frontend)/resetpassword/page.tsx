@@ -12,10 +12,15 @@ export default function ResetPasswordPage() {
   const [verified, setVerified] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [password, setPassword] = React.useState("");
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const resetPassword = async () => {
     try {
+<<<<<<< HEAD
       await axios.post(RESET_PASSWORD_URL, { token, password });
+=======
+      await axios.post(API_URL + RESET_PASSWORD_URL, { token, password });
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
     } catch (error: any) {
       console.log(error.response.data);
     }
@@ -23,7 +28,11 @@ export default function ResetPasswordPage() {
 
   const verifyToken = async () => {
     try {
+<<<<<<< HEAD
       await axios.post(VERIFY_FORGOT_PASSWORD_TOKEN_URL, { token });
+=======
+      await axios.post(API_URL + VERIFY_FORGOT_PASSWORD_TOKEN_URL, { token });
+>>>>>>> fc70fb897aa527dfd4db8472fb7c3f4d196df8ff
       setVerified(true);
     } catch (error: any) {
       setError(true);
